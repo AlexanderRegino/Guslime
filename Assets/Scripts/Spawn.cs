@@ -4,30 +4,50 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject prefabToSpawn; // Declare the variable at the class level.
+    public GameObject prefabToSpawn;      // Normal prefab
+    public GameObject rarerprefabToSpawn;  // Rare prefab
+    public GameObject rarestprefabToSpawn; // Rarest prefab
+    public float initialSpawnInterval = 9.0f;
+    public float minSpawnInterval = 3.0f;
 
-    // Function to spawn a GameObject at a specific position within the camera's view.
-    public void SpawnObjectAtLocation(Vector3 position, GameObject prefab)
+    private void Start()
     {
-        if (prefab != null)
+        // Start the spawning coroutine when the script is initialized.
+        StartCoroutine(SpawnObjectsWithDecreasingInterval());
+    }
+
+    private IEnumerator SpawnObjectsWithDecreasingInterval()
+    {
+        while (true)
         {
-            Camera mainCamera = Camera.main;
-            if (mainCamera != null)
+            float randomValue = Random.value;
+            GameObject prefabToSpawnNow = null;
+
+            // Determine which prefab to spawn based on random chance.
+            if (randomValue < 0.7f)
             {
-                Vector3 spawnPoint = mainCamera.ViewportToWorldPoint(position);
-                spawnPoint.z = 0f; // Adjust this value as needed.
-                Instantiate(prefab, spawnPoint, Quaternion.identity);
+                prefabToSpawnNow = prefabToSpawn; // 70% chance for prefabToSpawn
+            }
+            else if (randomValue < 0.9f)
+            {
+                prefabToSpawnNow = rarerprefabToSpawn; // 20% chance for rarerprefabToSpawn
             }
             else
             {
-                Debug.LogError("Main camera not found!");
+                prefabToSpawnNow = rarestprefabToSpawn; // 10% chance for rarestprefabToSpawn
             }
-        }
-        else
-        {
-            Debug.LogError("Prefab is not assigned!");
+
+            // Spawn the selected prefab with the current interval.
+            SpawnObjectAtDropLocation(prefabToSpawnNow);
+
+            // Decrease the spawn interval (but don't go below minSpawnInterval).
+            initialSpawnInterval = Mathf.Max(initialSpawnInterval - 1.0f, minSpawnInterval);
+
+            // Wait for the current interval.
+            yield return new WaitForSeconds(initialSpawnInterval);
         }
     }
+
     public void SpawnObjectAtDropLocation(GameObject prefab)
     {
         if (prefab != null)
@@ -35,13 +55,11 @@ public class Spawn : MonoBehaviour
             Camera mainCamera = Camera.main;
             if (mainCamera != null)
             {
-                // Define a random X position within the camera's view.
                 float randomX = Random.Range(0f, 1f);
                 Vector3 spawnPoint = mainCamera.ViewportToWorldPoint(new Vector3(randomX, 1f, 0f));
-
-                spawnPoint.z = 0f; // Adjust this value as needed.
+                spawnPoint.z = 0f;
                 GameObject newDropped = Instantiate(prefab, spawnPoint, prefab.transform.rotation);
-                Destroy(newDropped, 5);
+                // Destroy(newDropped, 5); // You can destroy it if needed.
             }
             else
             {
@@ -52,22 +70,5 @@ public class Spawn : MonoBehaviour
         {
             Debug.LogError("Prefab is not assigned!");
         }
-        
-    }
-
-    // Example usage:
-    void Update()
-    {
-        // Call the SpawnObjectAtLocation function with a specific position and prefab (e.g., the center of the screen and a prefab you assign in the Inspector).
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector3 spawnPosition = new Vector3(0.5f, 0.5f, 0f);
-            SpawnObjectAtDropLocation(prefabToSpawn); // Access the prefab from the class-level field.
-        }
     }
 }
-
-
-
-
-

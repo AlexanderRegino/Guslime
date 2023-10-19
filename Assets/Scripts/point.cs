@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class point : MonoBehaviour
 {
-    public int value;
+    [SerializeField] int value;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +19,11 @@ public class point : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Incrementing Points");
-            pointsManager.instance.UpdatePoints(1);
+            Debug.Log("Value");
+            pointsManager.instance.UpdatePoints(value);
             Destroy(gameObject);
         }
     }

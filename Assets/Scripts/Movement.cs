@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     }
     public void MoveRB(Vector3 vel)
     {
-        Debug.Log(vel);
+  
         rb.velocity = vel;
     }
 }

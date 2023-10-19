@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Projectile
+  - Audio
+  - Media
   layers:
   - Default
   - TransparentFX
@@ -17,7 +21,7 @@ TagManager:
   - Points
   - Barrier
   - Hazard
-  - 
+  - Enemy
   - 
   - 
   - 
