@@ -54,6 +54,12 @@ public class pointsManager : MonoBehaviour
     {
         Debug.Log("Points from Function");
         currentPoints += pointsToAdd; // Increment the points
+        if (currentPoints > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", currentPoints);
+        }
+
+        
         collectSound.Play();
         UpdateScoreText();
 

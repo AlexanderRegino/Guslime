@@ -5,8 +5,12 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public GameObject prefabToSpawn;      // Normal prefab
+   
+    public GameObject mediumprefabToSpawn; // Medium prefab
+    public GameObject uncommonprefabToSpawn; //Rarer than medium
     public GameObject rarerprefabToSpawn;  // Rare prefab
     public GameObject rarestprefabToSpawn; // Rarest prefab
+  
     public float initialSpawnInterval = 9.0f;
     public float minSpawnInterval = 3.0f;
 
@@ -24,17 +28,25 @@ public class Spawn : MonoBehaviour
             GameObject prefabToSpawnNow = null;
 
             // Determine which prefab to spawn based on random chance.
-            if (randomValue < 0.7f)
+            if (randomValue < 0.4f)  // Adjust this value for the uncommonprefabToSpawn
             {
-                prefabToSpawnNow = prefabToSpawn; // 70% chance for prefabToSpawn
+                prefabToSpawnNow = prefabToSpawn;  // 40% chance for prefabToSpawn
+            }
+            else if (randomValue < 0.6f)
+            {
+                prefabToSpawnNow = mediumprefabToSpawn;  // 20% chance for mediumprefabToSpawn
+            }
+            else if (randomValue < 0.8f)
+            {
+                prefabToSpawnNow = uncommonprefabToSpawn;  // 20% chance for uncommonprefabToSpawn
             }
             else if (randomValue < 0.9f)
             {
-                prefabToSpawnNow = rarerprefabToSpawn; // 20% chance for rarerprefabToSpawn
+                prefabToSpawnNow = rarerprefabToSpawn;  // 10% chance for rarerprefabToSpawn
             }
             else
             {
-                prefabToSpawnNow = rarestprefabToSpawn; // 10% chance for rarestprefabToSpawn
+                prefabToSpawnNow = rarestprefabToSpawn;  // 10% chance for rarestprefabToSpawn
             }
 
             // Spawn the selected prefab with the current interval.

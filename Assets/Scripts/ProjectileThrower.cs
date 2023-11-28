@@ -11,7 +11,7 @@ public class ProjectileThrower : MonoBehaviour
 
     public void Throw(GameObject projectilePrefab, Vector3 targetPosition, GameObject host, float ProjectileSpeed)
     {
-        Debug.Log(host);
+        Debug.Log("The host is ", host);
         // Check if enough time has passed since the last projectile was thrown.
      
             // Check if the projectilePrefab is the shotgunProjectile.
@@ -38,7 +38,14 @@ public class ProjectileThrower : MonoBehaviour
                 Vector3 rightDirection = rightRotation * throwDirection;
                 FireProjectile(projectilePrefab, rightDirection, host, ProjectileSpeed);
             }
-            else if (projectilePrefab.name == "slimeProjectile")
+            else if (projectilePrefab.name == "slimeProjectile" || projectilePrefab.name == "cannonProjectile")
+            {
+                // Instantiate the slimeProjectile with the regular behavior.
+                Vector3 throwDirection = targetPosition - transform.position;
+                throwDirection.Normalize();
+                FireProjectile(projectilePrefab, throwDirection, host, ProjectileSpeed);
+            }
+            else if ( projectilePrefab.name == "cannonProjectile")
             {
                 // Instantiate the slimeProjectile with the regular behavior.
                 Vector3 throwDirection = targetPosition - transform.position;
@@ -46,9 +53,9 @@ public class ProjectileThrower : MonoBehaviour
                 FireProjectile(projectilePrefab, throwDirection, host, ProjectileSpeed);
             }
             else
-            {
-                Debug.LogWarning("Unknown projectile prefab: " + projectilePrefab.name);
-            }
+                {
+                    Debug.LogWarning("Unknown projectile prefab: " + projectilePrefab.name);
+                }
 
             // Update the last time a projectile was thrown.
             lastProjectileThrownTime = Time.time;
@@ -58,6 +65,7 @@ public class ProjectileThrower : MonoBehaviour
     // Helper function to instantiate and set properties of projectiles.
     private void FireProjectile(GameObject projectilePrefab, Vector3 direction, GameObject host, float speed)
     {
+        Debug.Log("The host is ", host);
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         slimeballTouch touchScript = projectile.GetComponent<slimeballTouch>();
@@ -75,7 +83,11 @@ public class ProjectileThrower : MonoBehaviour
         {
             projectileLifetime = shotgunProjectileLifetime;
         }
-        else if (projectilePrefab.name == "slimeProjectile")
+        else if (projectilePrefab.name == "slimeProjectile" )
+        {
+            projectileLifetime = slimeProjectileLifetime;
+        }
+        else  //(projectilePrefab.name == "cannonProjectile"))
         {
             projectileLifetime = slimeProjectileLifetime;
         }

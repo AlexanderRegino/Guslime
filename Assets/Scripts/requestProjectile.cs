@@ -19,7 +19,7 @@ public class requestProjectile : MonoBehaviour
     void Update()
     {
         // Check if enough time has passed since the last projectile was requested.
-        if (Time.time - lastRequestTime >= requestCooldown)
+        if (Time.time - lastRequestTime >= requestCooldown && !PauseMenu.isPaused)
         {
             if (player != null && gameObject != null) // Check if the player reference is valid
             {

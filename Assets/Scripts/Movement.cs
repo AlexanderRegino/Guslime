@@ -7,10 +7,11 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+     
     }
     public void MoveTransform(Vector3 vel)
     {

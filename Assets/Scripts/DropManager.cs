@@ -22,6 +22,8 @@ public class DropManager : MonoBehaviour
         enemyDropTypes["Sentry(Clone)"] = SinglePointDrop; /* Your sentry-specific drop item */
         enemyDropTypes["MobileSentry(Clone)"] = QuadruplePointDrop; /* Your sentry-specific drop item */
         enemyDropTypes["ShotgunSentry(Clone)"] = OctuplePointDrop; /* Your sentry-specific drop item */
+        enemyDropTypes["CannonSentry(Clone)"] = QuadruplePointDrop; /* Your sentry-specific drop item */
+        enemyDropTypes["RotationSentry(Clone)"] = OctuplePointDrop; /* Your sentry-specific drop item */
     }
 
     public void HandleDrops(string enemyName, GameObject Enemy)
