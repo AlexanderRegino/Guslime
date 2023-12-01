@@ -7,6 +7,10 @@ public class MoveTowardsPlayer : MonoBehaviour
     [SerializeField] float moveSpeed = 5.0f; // Speed at which the entity moves towards the player
     private GameObject player; // Reference to the player GameObject
 
+    public void MultiplyMoveSpeed(float input)
+    {
+        moveSpeed *= input;
+    }
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player"); // Assuming you've tagged the player object with "Player".

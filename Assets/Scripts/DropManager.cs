@@ -20,6 +20,11 @@ public class DropManager : MonoBehaviour
         // Add enemy types and their corresponding drop items to the dictionary.
         // For example, if "Sentry" is an enemy type, assign a drop item for it.
         enemyDropTypes["Sentry(Clone)"] = SinglePointDrop; /* Your sentry-specific drop item */
+        enemyDropTypes["WaveSentry(Clone)"] = OctuplePointDrop; /* Your sentry-specific drop item */
+        enemyDropTypes["SpreadSentry(Clone)"] = QuadruplePointDrop; /* Your sentry-specific drop item */
+        enemyDropTypes["BurstSentry(Clone)"] = QuadruplePointDrop; /* Your sentry-specific drop item */
+        enemyDropTypes["HomingSentry(Clone)"] = SinglePointDrop; /* Your sentry-specific drop item */
+        enemyDropTypes["PlusSentry(Clone)"] = QuadruplePointDrop; /* Your sentry-specific drop item */
         enemyDropTypes["MobileSentry(Clone)"] = QuadruplePointDrop; /* Your sentry-specific drop item */
         enemyDropTypes["ShotgunSentry(Clone)"] = OctuplePointDrop; /* Your sentry-specific drop item */
         enemyDropTypes["CannonSentry(Clone)"] = QuadruplePointDrop; /* Your sentry-specific drop item */

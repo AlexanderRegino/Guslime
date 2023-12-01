@@ -22,7 +22,7 @@ TagManager:
   - Barrier
   - Hazard
   - Enemy
-  - 
+  - Foreground
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 4028882409
     locked: 0

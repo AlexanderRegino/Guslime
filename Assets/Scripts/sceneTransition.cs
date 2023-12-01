@@ -56,25 +56,37 @@ public class sceneTransition : MonoBehaviour
 
 
 
-    public void FadeOutSlide(string sceneName)
+    public void FadeOutSlide(string levelName)
     {
-        StartCoroutine(FadeOutSlideRoutine());
-        IEnumerator FadeOutSlideRoutine()
-        {
-            float timer = 0;
-            Vector3 initialPosition = fadeImage.transform.position;
-            Vector3 targetPosition = initialPosition - Vector3.up * Screen.height; // Move it downwards by the screen height
+        StartCoroutine(FadeOutSlideRoutine(levelName));
+    }
+    IEnumerator FadeOutSlideRoutine(string levelName)
+    {
+        float timer = 0;
+        Vector3 initialPosition = fadeImage.transform.position;
+        Vector3 targetPosition = initialPosition - Vector3.up * Screen.height; // Move it downwards by the screen height
 
-            while (timer < fadeTime)
-            {
-                timer += Time.deltaTime;
-                float t = timer / fadeTime;
-                fadeImage.transform.position = Vector3.Lerp(initialPosition, targetPosition, t);
-                yield return null;
-            }
+        while (timer < fadeTime)
+        {
+            timer += Time.deltaTime;
+            float t = timer / fadeTime;
+            fadeImage.transform.position = Vector3.Lerp(initialPosition, targetPosition, t);
             yield return null;
-            SceneManager.LoadScene(sceneName);
         }
+
+        // Optionally wait for an additional moment if desired
+        yield return new WaitForSeconds(0.5f);
+
+        // Save the current level to PlayerPreferences
+        PlayerPrefs.SetString("CurrentLevel", levelName);
+        PlayerPrefs.Save();
+
+        // You can trigger any additional logic here if needed
+
+        // For example, if you want to reset the scene without loading a new scene
+        SceneManager.LoadScene("MainGameplayLoop");
+
+        // Or if you have other logic, you can call it here
     }
 
     public void FadeInSlide()

@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 119c69156dbb9c640aa5780ba8f890b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1564c272bb8c346aed9484f20d90f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotgunProjectileLifetime: 5
+  slimeProjectileLifetime: 7
 --- !u!114 &7481954363687906014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +182,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requestCooldown: 3
   currentProjectilePrefab: {fileID: 455508354906102966, guid: 06e66274d6a6ef346b8edb63ce98fc79, type: 3}
+  CrissCrossPattern: 0
+  BurstFire: 0
+  RandomSpread: 0
+  WaveSpread: 0
   ProjectileSpeed: 6
 --- !u!114 &123576313269537487
 MonoBehaviour:

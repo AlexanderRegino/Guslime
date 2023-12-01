@@ -61,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 119c69156dbb9c640aa5780ba8f890b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,6 +183,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requestCooldown: 1
   currentProjectilePrefab: {fileID: 455508354906102966, guid: 8e095ce24a4fea2448dbf70762794983, type: 3}
+  CrissCrossPattern: 0
+  BurstFire: 0
+  RandomSpread: 0
+  WaveSpread: 0
   ProjectileSpeed: 5
 --- !u!114 &1594452734348923321
 MonoBehaviour:
@@ -196,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cbf829cad593c448c6f2288e80f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 3
   currentHealth: 0
 --- !u!114 &6389210899753332827
 MonoBehaviour:
@@ -248,6 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd8da9a15df6874d898fce6991eef64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationPrefab: {fileID: 455508354906102966, guid: 8e095ce24a4fea2448dbf70762794983, type: 3}
+  RotationPrefab: {fileID: 4619720244489679867, guid: 9698ef11cf353b14b99adcc00745bbf7, type: 3}
   radius: 2
   rotationAxis: {x: 0, y: 0, z: 1}

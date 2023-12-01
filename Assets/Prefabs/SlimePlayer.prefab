@@ -107,6 +107,9 @@ MonoBehaviour:
   speed: 10
   movement: {fileID: 0}
   currentProjectilePrefab: {fileID: 455508354906102966, guid: 8e095ce24a4fea2448dbf70762794983, type: 3}
+  alternateProjectilePrefab: {fileID: 0}
+  requestCooldown: 2
+  ProjectileSpeed: 5
 --- !u!114 &6449406550547643270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1564c272bb8c346aed9484f20d90f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotgunProjectileLifetime: 5
+  slimeProjectileLifetime: 7
 --- !u!114 &5269888411294776978
 MonoBehaviour:
   m_ObjectHideFlags: 0

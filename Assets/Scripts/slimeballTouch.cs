@@ -15,6 +15,10 @@ public class slimeballTouch : MonoBehaviour
     {
         // Get the parent GameObject of the collided object.
         GameObject parentObject = collision.transform.parent != null ? collision.transform.parent.gameObject : collision.gameObject;
+        if (parentObject != null)
+        {
+            //Debug.Log("Hit: " + parentObject.name);
+        }
 
         // Check if the parent object is the same as the host.
         if (parentObject == host)
@@ -36,7 +40,7 @@ public class slimeballTouch : MonoBehaviour
         else if (parentObject.CompareTag("Enemy") && host != null && host.CompareTag("Player"))
         {
             Debug.Log("Hit something with HP (Enemy)");
-
+            Debug.Log("Striking the" + parentObject.name);
             // Attempt to get the HP value from the parent object.
             var healthComponent = parentObject.GetComponent<Health>();
 

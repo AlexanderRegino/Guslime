@@ -9,11 +9,14 @@ public class PauseMenu : MonoBehaviour
     public KeyCode pauseKey;
     public static bool isPaused;
     private AudioSource audioSource;
+    private float originalTimeScale;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         pauseMenu.SetActive(false);
+      
     }
 
     // Update is called once per frame
@@ -33,15 +36,17 @@ public class PauseMenu : MonoBehaviour
     }
     public void PauseGame()
     {
+
         audioSource.Play();
         pauseMenu.SetActive(true);
+        originalTimeScale = Time.timeScale; // Save the current time scale
         Time.timeScale = 0f;
         isPaused = true;
     }
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = originalTimeScale; // Restore the original time scale
         isPaused = false;
     }
 
